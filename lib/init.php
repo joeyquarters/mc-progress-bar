@@ -8,3 +8,4 @@
 
 require_once( MC_PB_PLUGIN_DIR . '/lib/api.php' );
 require_once( MC_PB_PLUGIN_DIR . '/lib/admin-view.php' );
+require_once( MC_PB_PLUGIN_DIR . '/lib/shortcodes.php' );
