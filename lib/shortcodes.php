@@ -43,6 +43,7 @@ function mc_pb_create_progress_bar($current_count, $goal_count){
 
 	?>
 		<div class="mc-progress">
+			<h3 class="mc-progress__title">Our Progress</h3>
 			<div class="mc-progress-bar">
 				<div class="mc-progress-bar__inner" role="progressbar" aria-valuenow="<?php echo number_format($percentage, 2); ?>" aria-valuemax="100" style="width: <?php echo number_format($percentage, 2) . '%'; ?>">
 					<?php echo number_format($percentage) . '%'; ?>
