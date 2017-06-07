@@ -1,0 +1,13 @@
+{
+    "name": "joeyquarters/mc-progress-bar",
+    "description": "WordPress plugin for displaying a MailChimp list based progress bar.",
+    "authors": [
+        {
+            "name": "Joey Nichols",
+            "email": "joeyquarters@gmail.com"
+        }
+    ],
+    "require": {
+        "drewm/mailchimp-api": "^2.4"
+    }
+}
