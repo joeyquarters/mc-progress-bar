@@ -13,6 +13,10 @@
 add_action( 'admin_init', 'mc_pb_settings_init' );
 function mc_pb_settings_init(){
 
+	// Register our settings key where we will store a
+	// serialized array value to in the database
+	register_setting( 'mc-pb-settings', 'mc_pb_settings' );
+
 	// Define our API settings section
 	add_settings_section(
 		'mc_pb_api_settings',
@@ -29,7 +33,6 @@ function mc_pb_settings_init(){
 		'mc-pb-settings',
 		'mc_pb_api_settings'
 	);
-	register_setting( 'mc-pb-settings', 'mc_pb_api_key' );
 
 }
 
@@ -44,7 +47,8 @@ function mc_pb_api_settings_render(){
  * Callback to render our API Key field
  */
 function mc_pb_api_key_field_render(){
-	echo '<input class="regular-text" type="text" name="mc_pb_api_key" id="mc_pb_api_key" value="' . get_option('mc_pb_api_key') . '">';
+	$options = get_option('mc_pb_settings');
+	echo '<input class="regular-text" type="text" name="mc_pb_settings[mc_pb_api_key]" id="mc_pb_api_key" value="' . $options['mc_pb_api_key'] . '">';
 }
 
 /**
