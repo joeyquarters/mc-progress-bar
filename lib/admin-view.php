@@ -57,7 +57,9 @@ function mc_pb_api_settings_render(){
  */
 function mc_pb_api_key_field_render(){
 	$options = get_option('mc_pb_settings');
-	echo '<input class="regular-text" type="text" name="mc_pb_settings[mc_pb_api_key]" id="mc_pb_api_key" value="' . $options['mc_pb_api_key'] . '">';
+	$input = '<input class="regular-text" type="text" name="mc_pb_settings[mc_pb_api_key]" id="mc_pb_api_key" value="' . $options['mc_pb_api_key'] . '">';
+	$helper = '<p class="description">Not sure what this means? <a href="http://kb.mailchimp.com/integrations/api-integrations/about-api-keys" target="_blank">Get help finding your API key.</a></p>';
+	echo $input . $helper;
 }
 
 /**
@@ -66,7 +68,9 @@ function mc_pb_api_key_field_render(){
 function mc_pb_disable_styles_field_render(){
 	$options = get_option('mc_pb_settings');
 	$is_checked = isset($options['mc_pb_disable_styles']) ? $options['mc_pb_disable_styles'] : null;
-	echo '<input class="code" type="checkbox" name="mc_pb_settings[mc_pb_disable_styles]" value="1" ' . checked($is_checked, 1, false) . '> Disable plugin styles';
+	$input = '<label for="mc_pb_disable_styles"><input class="code" type="checkbox" name="mc_pb_settings[mc_pb_disable_styles]" id="mc_pb_disable_styles" value="1" ' . checked($is_checked, 1, false) . '> Disable plugin styles</label>';
+	$helper = '<p class="description">Check this if you want to disable the default plugin styles. Saves http request(s) and allows for easier styling.</p>';
+	echo $input . $helper;
 }
 
 /**
