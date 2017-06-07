@@ -34,6 +34,15 @@ function mc_pb_settings_init(){
 		'mc_pb_api_settings'
 	);
 
+	// Add disable styles checkbox
+	add_settings_field(
+		'mc_pb_disable_styles',
+		'Disable Styles',
+		'mc_pb_disable_styles_field_render',
+		'mc-pb-settings',
+		'mc_pb_api_settings'
+	);
+
 }
 
 /**
@@ -49,6 +58,15 @@ function mc_pb_api_settings_render(){
 function mc_pb_api_key_field_render(){
 	$options = get_option('mc_pb_settings');
 	echo '<input class="regular-text" type="text" name="mc_pb_settings[mc_pb_api_key]" id="mc_pb_api_key" value="' . $options['mc_pb_api_key'] . '">';
+}
+
+/**
+ * Callback to render our disable styles checkbox
+ */
+function mc_pb_disable_styles_field_render(){
+	$options = get_option('mc_pb_settings');
+	$is_checked = isset($options['mc_pb_disable_styles']) ? $options['mc_pb_disable_styles'] : null;
+	echo '<input class="code" type="checkbox" name="mc_pb_settings[mc_pb_disable_styles]" value="1" ' . checked($is_checked, 1, false) . '> Disable plugin styles';
 }
 
 /**

@@ -49,12 +49,12 @@ function mc_pb_create_progress_bar($current_count, $goal_count){
 				</div>
 			</div>
 			<div class="mc-progress__current">
-				<?php echo $current_count; ?>
-				<span class="mc-progress__small">Signers</span>
+				<span class="mc-progress__number"><?php echo $current_count; ?></span>
+				Signers
 			</div>
 			<div class="mc-progress__goal">
-				<?php echo $goal_count; ?>
-				<span class="mc-progress__small">Goal</span>
+				<span class="mc-progress__number"><?php echo $goal_count; ?></span>
+				Goal
 			</div>
 		</div>
 	<?php
