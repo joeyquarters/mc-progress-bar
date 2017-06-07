@@ -45,15 +45,15 @@ function mc_pb_create_progress_bar($current_count, $goal_count){
 		<div class="mc-progress">
 			<div class="mc-progress-bar">
 				<div class="mc-progress-bar__inner" role="progressbar" aria-valuenow="<?php echo number_format($percentage, 2); ?>" aria-valuemax="100" style="width: <?php echo number_format($percentage, 2) . '%'; ?>">
-					<?php echo number_format($percentage, 2) . '%'; ?>
+					<?php echo number_format($percentage) . '%'; ?>
 				</div>
 			</div>
 			<div class="mc-progress__current">
-				<span class="mc-progress__number"><?php echo $current_count; ?></span>
+				<span class="mc-progress__number"><?php echo number_format($current_count); ?></span>
 				Signers
 			</div>
 			<div class="mc-progress__goal">
-				<span class="mc-progress__number"><?php echo $goal_count; ?></span>
+				<span class="mc-progress__number"><?php echo number_format($goal_count); ?></span>
 				Goal
 			</div>
 		</div>
