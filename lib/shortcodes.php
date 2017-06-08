@@ -18,47 +18,49 @@
 add_shortcode( 'mc-progress-bar', 'mc_pb_render_mc_progress_bar' );
 function mc_pb_render_mc_progress_bar($atts){
 
+	$atts = shortcode_atts(
+		array(
+			'list_id'     => null,
+			'goal'        => null,
+			'title'       => 'Our Progress',
+			'signer_text' => 'Signers',
+			'goal_text'   => 'Goal'
+		),
+		$atts,
+		'mc-progress-bar'
+	);
+
+	// list_id and goal numbers are required
 	if (!isset($atts['list_id']) || !isset($atts['goal'])){
 		return false;
 	}
 
 	$list_count = mc_pb_get_list_member_count($atts['list_id']);
 
-	if ($list_count){
-		return mc_pb_create_progress_bar($list_count, $atts['goal']);
-	}
+	// Exit if we can't fetch a list count
+	if (!$list_count){ return false; }
 
-}
-
-/**
- * Create the actual progress bar markup
- */
-function mc_pb_create_progress_bar($current_count, $goal_count){
-
-	if (!$current_count || !$goal_count){
-		return false;
-	}
-
-	$percentage = ($current_count / $goal_count) * 100;
+	$percentage = ( intval($list_count) / intval($atts['goal']) ) * 100;
 
 	?>
 		<div class="mc-progress">
-			<h3 class="mc-progress__title">Our Progress</h3>
+			<h3 class="mc-progress__title"><?php echo $atts['title']; ?></h3>
 			<div class="mc-progress-bar">
 				<div class="mc-progress-bar__inner" role="progressbar" aria-valuenow="<?php echo number_format($percentage, 2); ?>" aria-valuemax="100" style="width: <?php echo number_format($percentage, 2) . '%'; ?>">
 					<?php echo number_format($percentage) . '%'; ?>
 				</div>
 			</div>
 			<div class="mc-progress__current">
-				<span class="mc-progress__number"><?php echo number_format($current_count); ?></span>
-				Signers
+				<span class="mc-progress__number"><?php echo number_format($list_count); ?></span>
+				<?php echo $atts['signer_text']; ?>
 			</div>
 			<div class="mc-progress__goal">
-				<span class="mc-progress__number"><?php echo number_format($goal_count); ?></span>
-				Goal
+				<span class="mc-progress__number"><?php echo number_format($atts['goal']); ?></span>
+				<?php echo $atts['goal_text']; ?>
 			</div>
 		</div>
 	<?php
+
 }
 
 // ================================
