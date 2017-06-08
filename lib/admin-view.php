@@ -98,6 +98,7 @@ function mc_pb_create_settings_page(){
 				<p>To use this plugin, you will need to find list ID's for your MailChimp lists. If you need assistance, please <a href="http://kb.mailchimp.com/lists/manage-contacts/find-your-list-id" target="_blank">refer to this help article</a>.</p>
 				<p>The shortcodes available in this plugin are as follows:</p>
 				<p><strong>Full Progress Bar</strong><code>[mc-progress-bar list_id='23fj23sj' goal="5000"]</code><p>
+				<p>Here is an example with all possible customizations: <code>[mc-progress-bar list_id='23fj23sj' goal="5000" title="New Title" signer_text="Users" goal_text="People"]</code></p>
 				<p><strong>Member Count</strong><code>[mc-pb-count]</code></p>
 			</div>
 
